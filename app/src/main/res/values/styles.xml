@@ -1,0 +1,37 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="tweet_component">
+        <item name="android:layout_marginLeft">@dimen/item_margin</item>
+        <item name="android:layout_marginRight">@dimen/item_margin</item>
+    </style>
+
+    <style name="tweet_component.image">
+        <item name="android:layout_height">@dimen/photo_size_small</item>
+        <item name="android:layout_width">@dimen/photo_size_small</item>
+        <item name="android:layout_marginTop">@dimen/item_margin</item>
+        <item name="android:layout_marginBottom">@dimen/item_margin</item>
+    </style>
+
+    <style name="tweet_component.name">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">@dimen/item_margin</item>
+    </style>
+
+    <style name="tweet_component.body">
+        <item name="android:layout_marginBottom">@dimen/item_margin</item>
+    </style>
+
+    <style name="tweet_component.screenname">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@color/lightGrey</item>
+    </style>
+
+</resources>
