@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_user_profile"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.codepath.apps.mocktwitterapp.ProfileActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/border">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"
+        app:srcCompat="@color/colorAccent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/ivHeader" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvMainUserName"
+        tools:text="my name"
+        style="@style/header_component.name"
+        android:layout_below="@+id/ivHeader"
+        android:layout_toRightOf="@+id/ivMainProfImage"
+        android:layout_toEndOf="@+id/ivMainProfImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvMainScreenName"
+        style="@style/header_component.screenname"
+        android:layout_below="@+id/tvMainUserName"
+        android:layout_toRightOf="@+id/ivMainProfImage"
+        android:layout_toEndOf="@+id/ivMainProfImage" />
+
+    <ImageView
+        android:id="@+id/ivMainProfImage"
+        tools:src="@drawable/twitter_logo"
+        style="@style/header_component.image"
+        android:layout_alignBottom="@id/tvMainScreenName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDescription"
+        tools:text="a really long description of myself that hopefully isn't too boring and contains some vague hip sounding catch phrases"
+        style="@style/header_component.body"
+        android:layout_below="@+id/ivMainProfImage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDescription"
+        android:layout_alignParentRight="true"
+        android:id="@+id/tvFollowers"
+        style="@style/header_component.info"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDescription"
+        android:layout_toLeftOf="@+id/tvFollowers"
+        android:id="@+id/tvFollowing"
+        style="@style/header_component.info"/>
+
+
+</RelativeLayout>

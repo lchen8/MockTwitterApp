@@ -34,26 +34,32 @@ public class UserTimelineFragment extends TweetsListFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         client = TwitterApplication.getRestClient();
-        populateTimeline();
+        loadNextDataFromApi(TwitterClient.INITIAL_LOAD);
     }
 
-    // Send API request to get timeline json
-    // then fill the list view
-    private void populateTimeline() {
+
+    public void loadNextDataFromApi(final long maxID) {
         String screenName = getArguments().getString("screen_name");
-        client.getUserTimeline(new JsonHttpResponseHandler() {
+        client.getUserTimeline(maxID, screenName, new JsonHttpResponseHandler() {
             // SUCCESS
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
+                if (maxID == TwitterClient.RELOAD) clear();
                 addAll(Tweet.fromJSONArray(response));
-                // deserialize json, make objects, and load into listview
+                doneLoading();
             }
 
             // FAILURE
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 Log.d("DEBUG", errorResponse.toString());
+                // only pull from database if this is first time loading
+                if (maxID == TwitterClient.INITIAL_LOAD) {
+                    offlineAdd();
+                }
+                showErrorSnackbar();
+                doneLoading();
             }
         });
     }

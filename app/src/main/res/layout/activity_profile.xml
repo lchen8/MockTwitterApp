@@ -4,21 +4,23 @@
     android:id="@+id/activity_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.codepath.apps.mocktwitterapp.ProfileActivity">
+    tools:context="com.codepath.apps.mocktwitterapp.ProfileActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
 
-
-    <RelativeLayout
-        android:id="@+id/rlHeader"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/flProfileContainer"
+        android:layout_below="@+id/toolbar" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:id="@+id/flContainer"
-        android:layout_below="@+id/rlHeader">
-
+        android:id="@+id/flTweetsContainer"
+        android:layout_below="@+id/flProfileContainer">
     </FrameLayout>
+
 </RelativeLayout>

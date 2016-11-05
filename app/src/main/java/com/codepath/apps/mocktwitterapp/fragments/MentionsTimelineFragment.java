@@ -26,26 +26,33 @@ public class MentionsTimelineFragment extends TweetsListFragment{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         client = TwitterApplication.getRestClient();
-        populateTimeline();
+        loadNextDataFromApi(TwitterClient.INITIAL_LOAD);
     }
 
-    // Send API request to get timeline json
-    // then fill the list view
-    private void populateTimeline() {
-        client.getMentionsTimeline(new JsonHttpResponseHandler() {
+    public void loadNextDataFromApi(final long maxID) {
+
+        client.getMentionsTimeline(maxID, new JsonHttpResponseHandler() {
             // SUCCESS
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
                 Log.d("DEBUG", "got here!");
+                if (maxID == TwitterClient.RELOAD) clear();
                 addAll(Tweet.fromJSONArray(response));
-                // deserialize json, make objects, and load into listview
+                if (listener != null) listener.onRequestFinished();
+                doneLoading();
             }
 
             // FAILURE
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                Log.d("DEBUG", errorResponse.toString());
+                // only pull from database if this is first time loading
+                if (maxID == TwitterClient.INITIAL_LOAD) {
+                    offlineAdd();
+                }
+                showErrorSnackbar();
+                if (listener != null) listener.onRequestFinished();
+                doneLoading();
             }
         });
     }

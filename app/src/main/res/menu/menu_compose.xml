@@ -11,13 +11,4 @@
         app:actionLayout="@layout/progress_bar"
         />
 
-    <!--loading color indicator-->
-    <item
-        android:id="@+id/miProfile"
-        android:icon="@drawable/ic_profile"
-        app:showAsAction="ifRoom|withText"
-        android:title="Profile"
-        android:onClick="onProfileView">
-    </item>
-
 </menu>
