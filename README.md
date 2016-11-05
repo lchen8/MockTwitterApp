@@ -56,10 +56,9 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-src='https://drive.google.com/file/d/0B6xxBM6ZXs77cm84X0EzVDRiMjg/view?usp=sharing'
-(I was running into troubles with an emulator, so I filmed it on my phone.)
+https://drive.google.com/file/d/0B6xxBM6ZXs77cm84X0EzVDRiMjg/view?usp=sharing
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+(I was running into troubles with an emulator, so I filmed it on my phone.)
 
 ## Notes
  - Favorite counts for retweeted tweets are incorrect; I assume this is because it gets the number of favorites for the retweet, and not the original tweet. Getting the correct number would require another API call which I have not implemented.
